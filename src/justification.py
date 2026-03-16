@@ -21,8 +21,8 @@ def generate_justification(ticket, classe):
     Returns:
         str: A short explanation describing why the ticket belongs to the predicted class.
 
-    Example:
-        ```python
+    Example::
+
         from src.justification import generate_justification
 
         explanation = generate_justification(
@@ -31,7 +31,7 @@ def generate_justification(ticket, classe):
         )
 
         print(explanation)
-        ```
+        
     """
 
     prompt = f"""

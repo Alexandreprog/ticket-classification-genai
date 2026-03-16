@@ -10,12 +10,12 @@ def load_embedding_model():
     Returns:
         SentenceTransformer: Loaded embedding model.
 
-    Example:
-        ```python
+    Example::
+        
         from src.embeddings import load_embedding_model
 
         model = load_embedding_model()
-        ```
+        
     """
 
     device = "cuda" if torch.cuda.is_available() else "cpu"
@@ -38,12 +38,12 @@ def encode_texts(model, texts):
     Returns:
         numpy.ndarray: Array of embeddings representing the texts.
 
-    Example:
-        ```python
+    Example::
+        
         from src.embeddings import encode_texts
 
         embeddings = encode_texts(model, ["Example ticket"])
-        ```
+        
     """
 
     return model.encode(texts)

@@ -11,12 +11,12 @@ def train_classifier(X, y):
     Returns:
         LogisticRegression: A trained Logistic Regression classifier.
 
-    Example:
-        ```python
+    Example::
+        
         from src.classifier import train_classifier
 
         clf = train_classifier(X_train, y_train)
-        ```
+        
     """
 
     clf = LogisticRegression(max_iter=1000)
@@ -36,13 +36,13 @@ def predict_ticket(clf, embedding):
     Returns:
         str: The predicted ticket class.
 
-    Example:
-        ```python
+    Example::
+
         from src.classifier import predict_ticket
 
         predicted_class = predict_ticket(clf, embedding)
         print(predicted_class)
-        ```
+        
     """
 
     probs = clf.predict_proba(embedding)[0]

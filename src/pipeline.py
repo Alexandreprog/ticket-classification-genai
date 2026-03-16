@@ -17,8 +17,8 @@ def classify_ticket(ticket_text, embedding_model, clf):
     Returns:
         dict: Dictionary containing the predicted class and its justification.
 
-    Example:
-        ```python
+    Example::
+        
         from src.pipeline import classify_ticket
 
         result = classify_ticket(
@@ -29,7 +29,7 @@ def classify_ticket(ticket_text, embedding_model, clf):
 
         print(result["classe"])
         print(result["justificativa"])
-        ```
+        
     """
 
     emb = embedding_model.encode([ticket_text])

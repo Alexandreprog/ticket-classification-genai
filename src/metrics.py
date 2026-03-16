@@ -11,13 +11,13 @@ def evaluate_model(y_true, y_pred):
     Returns:
         str: Text summary containing precision, recall, f1-score, and support.
 
-    Example:
-        ```python
+    Example::
+        
         from src.metrics import evaluate_model
 
         report = evaluate_model(y_true, y_pred)
         print(report)
-        ```
+        
     """
 
     report = classification_report(y_true, y_pred)

@@ -10,12 +10,12 @@ def load_dataset(path: str) -> pd.DataFrame:
     Returns:
         pandas.DataFrame: Dataset loaded into a DataFrame.
 
-    Example:
-        ```python
+    Example::
+        
         from src.data_prep import load_dataset
 
         df = load_dataset("tickets.csv")
-        ```
+        
     """
 
     df = pd.read_csv(path)
@@ -50,14 +50,14 @@ def sample_dataset(
     Returns:
         pandas.DataFrame: Balanced sampled dataset.
 
-    Example:
-        ```python
+    Example::
+
         from src.data_prep import sample_dataset
 
         sample = sample_dataset(df)
 
         sample = sample_dataset(df, n=400, num_classes=8)
-        ```
+        
     """
 
     samples_per_class = int(n / num_classes)
@@ -105,14 +105,14 @@ def train_test_split(
             - Training dataset
             - Testing dataset
 
-    Example:
-        ```python
+    Example::
+        
         from src.data_prep import train_test_split
 
         train_df, test_df = train_test_split(df)
 
         train_df, test_df = train_test_split(df, train_ratio=0.8, test_ratio=0.2)
-        ```
+        
     """
 
     if train_ratio + test_ratio != 1:
