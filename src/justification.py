@@ -9,6 +9,30 @@ client = Groq(api_key=os.getenv("GROQ_API_KEY"))
 
 
 def generate_justification(ticket, classe):
+    """Generate a natural language justification for a predicted ticket class.
+
+    This function uses a large language model to explain why a given
+    ticket was classified into a specific category.
+
+    Args:
+        ticket (str): The original ticket text.
+        classe (str): Predicted ticket category.
+
+    Returns:
+        str: A short explanation describing why the ticket belongs to the predicted class.
+
+    Example:
+        ```python
+        from src.justification import generate_justification
+
+        explanation = generate_justification(
+            "Cannot connect to VPN",
+            "network_issue"
+        )
+
+        print(explanation)
+        ```
+    """
 
     prompt = f"""
     Você é um especialista em suporte de TI.
