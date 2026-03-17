@@ -1,0 +1,239 @@
+
+
+<!DOCTYPE html>
+<html class="writer-html5" lang="en" data-content_root="../../">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>src.data_prep &mdash; Ticket Classification GenAI  documentation</title>
+      <link rel="stylesheet" type="text/css" href="../../_static/pygments.css?v=80d5e7a1" />
+      <link rel="stylesheet" type="text/css" href="../../_static/css/theme.css?v=9edc463e" />
+
+  
+      <script src="../../_static/jquery.js?v=5d32c60e"></script>
+      <script src="../../_static/_sphinx_javascript_frameworks_compat.js?v=2cd50e6c"></script>
+      <script src="../../_static/documentation_options.js?v=5929fcd5"></script>
+      <script src="../../_static/doctools.js?v=fd6eb6e6"></script>
+      <script src="../../_static/sphinx_highlight.js?v=6ffebe34"></script>
+    <script src="../../_static/js/theme.js"></script>
+    <link rel="index" title="Index" href="../../genindex.html" />
+    <link rel="search" title="Search" href="../../search.html" /> 
+</head>
+
+<body class="wy-body-for-nav"> 
+  <div class="wy-grid-for-nav">
+    <nav data-toggle="wy-nav-shift" class="wy-nav-side">
+      <div class="wy-side-scroll">
+        <div class="wy-side-nav-search" >
+
+          
+          
+          <a href="../../index.html" class="icon icon-home">
+            Ticket Classification GenAI
+          </a>
+<div role="search">
+  <form id="rtd-search-form" class="wy-form" action="../../search.html" method="get">
+    <input type="text" name="q" placeholder="Search docs" aria-label="Search docs" />
+    <input type="hidden" name="check_keywords" value="yes" />
+    <input type="hidden" name="area" value="default" />
+  </form>
+</div>
+        </div><div class="wy-menu wy-menu-vertical" data-spy="affix" role="navigation" aria-label="Navigation menu">
+              <p class="caption" role="heading"><span class="caption-text">Contents:</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="../../modules.html">src</a></li>
+</ul>
+
+        </div>
+      </div>
+    </nav>
+
+    <section data-toggle="wy-nav-shift" class="wy-nav-content-wrap"><nav class="wy-nav-top" aria-label="Mobile navigation menu" >
+          <i data-toggle="wy-nav-top" class="fa fa-bars"></i>
+          <a href="../../index.html">Ticket Classification GenAI</a>
+      </nav>
+
+      <div class="wy-nav-content">
+        <div class="rst-content">
+          <div role="navigation" aria-label="Page navigation">
+  <ul class="wy-breadcrumbs">
+      <li><a href="../../index.html" class="icon icon-home" aria-label="Home"></a></li>
+          <li class="breadcrumb-item"><a href="../index.html">Module code</a></li>
+      <li class="breadcrumb-item active">src.data_prep</li>
+      <li class="wy-breadcrumbs-aside">
+      </li>
+  </ul>
+  <hr/>
+</div>
+          <div role="main" class="document" itemscope="itemscope" itemtype="http://schema.org/Article">
+           <div itemprop="articleBody">
+             
+  <h1>Source code for src.data_prep</h1><div class="highlight"><pre>
+<span></span><span class="kn">import</span> <span class="nn">pandas</span> <span class="k">as</span> <span class="nn">pd</span>
+
+
+<div class="viewcode-block" id="load_dataset">
+<a class="viewcode-back" href="../../data_prep.html#src.data_prep.load_dataset">[docs]</a>
+<span class="k">def</span> <span class="nf">load_dataset</span><span class="p">(</span><span class="n">path</span><span class="p">:</span> <span class="nb">str</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="n">pd</span><span class="o">.</span><span class="n">DataFrame</span><span class="p">:</span>
+<span class="w">    </span><span class="sd">&quot;&quot;&quot;Load a dataset from a CSV file.</span>
+
+<span class="sd">    Args:</span>
+<span class="sd">        path (str): Path to the CSV dataset.</span>
+
+<span class="sd">    Returns:</span>
+<span class="sd">        pandas.DataFrame: Dataset loaded into a DataFrame.</span>
+
+<span class="sd">    Example::</span>
+<span class="sd">        </span>
+<span class="sd">        from src.data_prep import load_dataset</span>
+
+<span class="sd">        df = load_dataset(&quot;tickets.csv&quot;)</span>
+<span class="sd">        </span>
+<span class="sd">    &quot;&quot;&quot;</span>
+
+    <span class="n">df</span> <span class="o">=</span> <span class="n">pd</span><span class="o">.</span><span class="n">read_csv</span><span class="p">(</span><span class="n">path</span><span class="p">)</span>
+    <span class="k">return</span> <span class="n">df</span></div>
+
+
+
+<div class="viewcode-block" id="sample_dataset">
+<a class="viewcode-back" href="../../data_prep.html#src.data_prep.sample_dataset">[docs]</a>
+<span class="k">def</span> <span class="nf">sample_dataset</span><span class="p">(</span>
+    <span class="n">df</span><span class="p">:</span> <span class="n">pd</span><span class="o">.</span><span class="n">DataFrame</span><span class="p">,</span>
+    <span class="n">n</span><span class="p">:</span> <span class="nb">int</span> <span class="o">=</span> <span class="mi">200</span><span class="p">,</span>
+    <span class="n">num_classes</span><span class="p">:</span> <span class="nb">int</span> <span class="o">=</span> <span class="mi">8</span><span class="p">,</span>
+    <span class="n">seed</span><span class="p">:</span> <span class="nb">int</span> <span class="o">=</span> <span class="mi">42</span>
+<span class="p">)</span> <span class="o">-&gt;</span> <span class="n">pd</span><span class="o">.</span><span class="n">DataFrame</span><span class="p">:</span>
+<span class="w">    </span><span class="sd">&quot;&quot;&quot;Create a balanced sample from the dataset.</span>
+
+<span class="sd">    This function samples the same number of rows from each class</span>
+<span class="sd">    in the ``Topic_group`` column in order to create a balanced</span>
+<span class="sd">    dataset for experimentation or model training.</span>
+
+<span class="sd">    The number of samples per class is calculated automatically as:</span>
+
+<span class="sd">    n / num_classes</span>
+
+<span class="sd">    Args:</span>
+<span class="sd">        df (pandas.DataFrame): Original dataset containing the tickets.</span>
+<span class="sd">        n (int, optional): Total number of samples desired in the final dataset.</span>
+<span class="sd">            Defaults to 200.</span>
+<span class="sd">        num_classes (int, optional): Number of classes expected in the dataset.</span>
+<span class="sd">            Defaults to 8.</span>
+<span class="sd">        seed (int, optional): Random seed used for reproducibility.</span>
+<span class="sd">            Defaults to 42.</span>
+
+<span class="sd">    Returns:</span>
+<span class="sd">        pandas.DataFrame: Balanced sampled dataset.</span>
+
+<span class="sd">    Example::</span>
+
+<span class="sd">        from src.data_prep import sample_dataset</span>
+
+<span class="sd">        sample = sample_dataset(df)</span>
+
+<span class="sd">        sample = sample_dataset(df, n=400, num_classes=8)</span>
+<span class="sd">        </span>
+<span class="sd">    &quot;&quot;&quot;</span>
+
+    <span class="n">samples_per_class</span> <span class="o">=</span> <span class="nb">int</span><span class="p">(</span><span class="n">n</span> <span class="o">/</span> <span class="n">num_classes</span><span class="p">)</span>
+
+    <span class="n">sample_df</span> <span class="o">=</span> <span class="p">(</span>
+        <span class="n">df</span><span class="o">.</span><span class="n">groupby</span><span class="p">(</span><span class="s2">&quot;Topic_group&quot;</span><span class="p">,</span> <span class="n">group_keys</span><span class="o">=</span><span class="kc">False</span><span class="p">)</span>
+        <span class="o">.</span><span class="n">apply</span><span class="p">(</span><span class="k">lambda</span> <span class="n">x</span><span class="p">:</span> <span class="n">x</span><span class="o">.</span><span class="n">sample</span><span class="p">(</span><span class="n">samples_per_class</span><span class="p">,</span> <span class="n">random_state</span><span class="o">=</span><span class="n">seed</span><span class="p">))</span>
+        <span class="o">.</span><span class="n">reset_index</span><span class="p">(</span><span class="n">drop</span><span class="o">=</span><span class="kc">True</span><span class="p">)</span>
+    <span class="p">)</span>
+
+    <span class="nb">print</span><span class="p">(</span><span class="n">sample_df</span><span class="p">[</span><span class="s2">&quot;Topic_group&quot;</span><span class="p">]</span><span class="o">.</span><span class="n">value_counts</span><span class="p">())</span>
+
+    <span class="k">return</span> <span class="n">sample_df</span></div>
+
+
+
+<div class="viewcode-block" id="train_test_split">
+<a class="viewcode-back" href="../../data_prep.html#src.data_prep.train_test_split">[docs]</a>
+<span class="k">def</span> <span class="nf">train_test_split</span><span class="p">(</span>
+    <span class="n">df</span><span class="p">:</span> <span class="n">pd</span><span class="o">.</span><span class="n">DataFrame</span><span class="p">,</span>
+    <span class="n">train_ratio</span><span class="p">:</span> <span class="nb">float</span> <span class="o">=</span> <span class="mf">0.7</span><span class="p">,</span>
+    <span class="n">test_ratio</span><span class="p">:</span> <span class="nb">float</span> <span class="o">=</span> <span class="mf">0.3</span><span class="p">,</span>
+    <span class="n">seed</span><span class="p">:</span> <span class="nb">int</span> <span class="o">=</span> <span class="mi">42</span>
+<span class="p">)</span> <span class="o">-&gt;</span> <span class="nb">tuple</span><span class="p">[</span><span class="n">pd</span><span class="o">.</span><span class="n">DataFrame</span><span class="p">,</span> <span class="n">pd</span><span class="o">.</span><span class="n">DataFrame</span><span class="p">]:</span>
+<span class="w">    </span><span class="sd">&quot;&quot;&quot;Split a dataset into training and testing sets.</span>
+
+<span class="sd">    The dataset is randomly split according to the specified</span>
+<span class="sd">    training and testing ratios.</span>
+
+<span class="sd">    By default the split is:</span>
+
+<span class="sd">    - 70% training data</span>
+<span class="sd">    - 30% testing data</span>
+
+<span class="sd">    Args:</span>
+<span class="sd">        df (pandas.DataFrame): Dataset to split.</span>
+<span class="sd">        train_ratio (float, optional): Proportion of data used for training.</span>
+<span class="sd">            Defaults to 0.7.</span>
+<span class="sd">        test_ratio (float, optional): Proportion of data used for testing.</span>
+<span class="sd">            Defaults to 0.3.</span>
+<span class="sd">        seed (int, optional): Random seed for reproducibility.</span>
+<span class="sd">            Defaults to 42.</span>
+
+<span class="sd">    Returns:</span>
+<span class="sd">        tuple[pandas.DataFrame, pandas.DataFrame]:</span>
+<span class="sd">            A tuple containing:</span>
+
+<span class="sd">            - Training dataset</span>
+<span class="sd">            - Testing dataset</span>
+
+<span class="sd">    Example::</span>
+<span class="sd">        </span>
+<span class="sd">        from src.data_prep import train_test_split</span>
+
+<span class="sd">        train_df, test_df = train_test_split(df)</span>
+
+<span class="sd">        train_df, test_df = train_test_split(df, train_ratio=0.8, test_ratio=0.2)</span>
+<span class="sd">        </span>
+<span class="sd">    &quot;&quot;&quot;</span>
+
+    <span class="k">if</span> <span class="n">train_ratio</span> <span class="o">+</span> <span class="n">test_ratio</span> <span class="o">!=</span> <span class="mi">1</span><span class="p">:</span>
+        <span class="k">raise</span> <span class="ne">ValueError</span><span class="p">(</span><span class="s2">&quot;train_ratio and test_ratio must sum to 1.&quot;</span><span class="p">)</span>
+
+    <span class="n">test_size</span> <span class="o">=</span> <span class="nb">int</span><span class="p">(</span><span class="nb">len</span><span class="p">(</span><span class="n">df</span><span class="p">)</span> <span class="o">*</span> <span class="n">test_ratio</span><span class="p">)</span>
+
+    <span class="n">test</span> <span class="o">=</span> <span class="n">df</span><span class="o">.</span><span class="n">sample</span><span class="p">(</span><span class="n">n</span><span class="o">=</span><span class="n">test_size</span><span class="p">,</span> <span class="n">random_state</span><span class="o">=</span><span class="n">seed</span><span class="p">)</span>
+    <span class="n">train</span> <span class="o">=</span> <span class="n">df</span><span class="o">.</span><span class="n">drop</span><span class="p">(</span><span class="n">test</span><span class="o">.</span><span class="n">index</span><span class="p">)</span>
+
+    <span class="nb">print</span><span class="p">(</span><span class="s2">&quot;Train size:&quot;</span><span class="p">,</span> <span class="nb">len</span><span class="p">(</span><span class="n">train</span><span class="p">))</span>
+    <span class="nb">print</span><span class="p">(</span><span class="s2">&quot;Test size:&quot;</span><span class="p">,</span> <span class="nb">len</span><span class="p">(</span><span class="n">test</span><span class="p">))</span>
+
+    <span class="k">return</span> <span class="n">train</span><span class="p">,</span> <span class="n">test</span></div>
+
+</pre></div>
+
+           </div>
+          </div>
+          <footer>
+
+  <hr/>
+
+  <div role="contentinfo">
+    <p>&#169; Copyright 2026, Alexandre Bezerra de Lima.</p>
+  </div>
+
+  Built with <a href="https://www.sphinx-doc.org/">Sphinx</a> using a
+    <a href="https://github.com/readthedocs/sphinx_rtd_theme">theme</a>
+    provided by <a href="https://readthedocs.org">Read the Docs</a>.
+   
+
+</footer>
+        </div>
+      </div>
+    </section>
+  </div>
+  <script>
+      jQuery(function () {
+          SphinxRtdTheme.Navigation.enable(true);
+      });
+  </script> 
+
+</body>
+</html>

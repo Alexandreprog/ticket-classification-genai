@@ -1,0 +1,185 @@
+
+
+<!DOCTYPE html>
+<html class="writer-html5" lang="en" data-content_root="../../">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>src.classifier &mdash; Ticket Classification GenAI  documentation</title>
+      <link rel="stylesheet" type="text/css" href="../../_static/pygments.css?v=80d5e7a1" />
+      <link rel="stylesheet" type="text/css" href="../../_static/css/theme.css?v=9edc463e" />
+
+  
+      <script src="../../_static/jquery.js?v=5d32c60e"></script>
+      <script src="../../_static/_sphinx_javascript_frameworks_compat.js?v=2cd50e6c"></script>
+      <script src="../../_static/documentation_options.js?v=5929fcd5"></script>
+      <script src="../../_static/doctools.js?v=fd6eb6e6"></script>
+      <script src="../../_static/sphinx_highlight.js?v=6ffebe34"></script>
+    <script src="../../_static/js/theme.js"></script>
+    <link rel="index" title="Index" href="../../genindex.html" />
+    <link rel="search" title="Search" href="../../search.html" /> 
+</head>
+
+<body class="wy-body-for-nav"> 
+  <div class="wy-grid-for-nav">
+    <nav data-toggle="wy-nav-shift" class="wy-nav-side">
+      <div class="wy-side-scroll">
+        <div class="wy-side-nav-search" >
+
+          
+          
+          <a href="../../index.html" class="icon icon-home">
+            Ticket Classification GenAI
+          </a>
+<div role="search">
+  <form id="rtd-search-form" class="wy-form" action="../../search.html" method="get">
+    <input type="text" name="q" placeholder="Search docs" aria-label="Search docs" />
+    <input type="hidden" name="check_keywords" value="yes" />
+    <input type="hidden" name="area" value="default" />
+  </form>
+</div>
+        </div><div class="wy-menu wy-menu-vertical" data-spy="affix" role="navigation" aria-label="Navigation menu">
+              <p class="caption" role="heading"><span class="caption-text">Contents:</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="../../modules.html">src</a></li>
+</ul>
+
+        </div>
+      </div>
+    </nav>
+
+    <section data-toggle="wy-nav-shift" class="wy-nav-content-wrap"><nav class="wy-nav-top" aria-label="Mobile navigation menu" >
+          <i data-toggle="wy-nav-top" class="fa fa-bars"></i>
+          <a href="../../index.html">Ticket Classification GenAI</a>
+      </nav>
+
+      <div class="wy-nav-content">
+        <div class="rst-content">
+          <div role="navigation" aria-label="Page navigation">
+  <ul class="wy-breadcrumbs">
+      <li><a href="../../index.html" class="icon icon-home" aria-label="Home"></a></li>
+          <li class="breadcrumb-item"><a href="../index.html">Module code</a></li>
+      <li class="breadcrumb-item active">src.classifier</li>
+      <li class="wy-breadcrumbs-aside">
+      </li>
+  </ul>
+  <hr/>
+</div>
+          <div role="main" class="document" itemscope="itemscope" itemtype="http://schema.org/Article">
+           <div itemprop="articleBody">
+             
+  <h1>Source code for src.classifier</h1><div class="highlight"><pre>
+<span></span><span class="kn">import</span> <span class="nn">joblib</span>
+<span class="kn">from</span> <span class="nn">sklearn.linear_model</span> <span class="kn">import</span> <span class="n">LogisticRegression</span>
+
+
+<div class="viewcode-block" id="load_classifier">
+<a class="viewcode-back" href="../../classifier.html#src.classifier.load_classifier">[docs]</a>
+<span class="k">def</span> <span class="nf">load_classifier</span><span class="p">(</span><span class="n">path</span><span class="o">=</span><span class="s2">&quot;models/classifier.joblib&quot;</span><span class="p">):</span>
+<span class="w">    </span><span class="sd">&quot;&quot;&quot;Load a trained classification model from disk.</span>
+
+<span class="sd">    This function loads a previously trained machine learning model</span>
+<span class="sd">    using joblib. The model is expected to be saved in the specified path.</span>
+
+<span class="sd">    Args:</span>
+<span class="sd">        path (str): Path to the saved model file. Defaults to</span>
+<span class="sd">            &quot;models/classifier.joblib&quot;.</span>
+
+<span class="sd">    Returns:</span>
+<span class="sd">        object: Loaded classifier model.</span>
+
+<span class="sd">    Example::</span>
+<span class="sd">        </span>
+<span class="sd">        from src.classifier import load_classifier</span>
+
+<span class="sd">        clf = load_classifier()</span>
+<span class="sd">        </span>
+<span class="sd">    &quot;&quot;&quot;</span>
+    <span class="k">return</span> <span class="n">joblib</span><span class="o">.</span><span class="n">load</span><span class="p">(</span><span class="n">path</span><span class="p">)</span></div>
+
+
+<div class="viewcode-block" id="train_classifier">
+<a class="viewcode-back" href="../../classifier.html#src.classifier.train_classifier">[docs]</a>
+<span class="k">def</span> <span class="nf">train_classifier</span><span class="p">(</span><span class="n">X</span><span class="p">,</span> <span class="n">y</span><span class="p">):</span>
+<span class="w">    </span><span class="sd">&quot;&quot;&quot;Train a ticket classification model using Logistic Regression.</span>
+
+<span class="sd">    Args:</span>
+<span class="sd">        X (array-like): Feature matrix containing the embeddings of the tickets.</span>
+<span class="sd">        y (array-like): Target labels corresponding to each ticket.</span>
+
+<span class="sd">    Returns:</span>
+<span class="sd">        LogisticRegression: A trained Logistic Regression classifier.</span>
+
+<span class="sd">    Example::</span>
+<span class="sd">        </span>
+<span class="sd">        from src.classifier import train_classifier</span>
+
+<span class="sd">        clf = train_classifier(X_train, y_train)</span>
+<span class="sd">        </span>
+<span class="sd">    &quot;&quot;&quot;</span>
+
+    <span class="n">clf</span> <span class="o">=</span> <span class="n">LogisticRegression</span><span class="p">(</span><span class="n">max_iter</span><span class="o">=</span><span class="mi">1000</span><span class="p">)</span>
+
+    <span class="n">clf</span><span class="o">.</span><span class="n">fit</span><span class="p">(</span><span class="n">X</span><span class="p">,</span> <span class="n">y</span><span class="p">)</span>
+
+    <span class="k">return</span> <span class="n">clf</span></div>
+
+
+
+<div class="viewcode-block" id="predict_ticket">
+<a class="viewcode-back" href="../../classifier.html#src.classifier.predict_ticket">[docs]</a>
+<span class="k">def</span> <span class="nf">predict_ticket</span><span class="p">(</span><span class="n">clf</span><span class="p">,</span> <span class="n">embedding</span><span class="p">):</span>
+<span class="w">    </span><span class="sd">&quot;&quot;&quot;Predict the class of a ticket using a trained classifier.</span>
+
+<span class="sd">    Args:</span>
+<span class="sd">        clf (LogisticRegression): Trained classification model.</span>
+<span class="sd">        embedding (array-like): Embedding vector representing the ticket text.</span>
+
+<span class="sd">    Returns:</span>
+<span class="sd">        str: The predicted ticket class.</span>
+
+<span class="sd">    Example::</span>
+
+<span class="sd">        from src.classifier import predict_ticket</span>
+
+<span class="sd">        predicted_class = predict_ticket(clf, embedding)</span>
+<span class="sd">        print(predicted_class)</span>
+<span class="sd">        </span>
+<span class="sd">    &quot;&quot;&quot;</span>
+
+    <span class="n">probs</span> <span class="o">=</span> <span class="n">clf</span><span class="o">.</span><span class="n">predict_proba</span><span class="p">(</span><span class="n">embedding</span><span class="p">)[</span><span class="mi">0</span><span class="p">]</span>
+
+    <span class="n">predicted_class</span> <span class="o">=</span> <span class="n">clf</span><span class="o">.</span><span class="n">classes_</span><span class="p">[</span><span class="n">probs</span><span class="o">.</span><span class="n">argmax</span><span class="p">()]</span>
+
+    <span class="k">return</span> <span class="n">predicted_class</span></div>
+
+</pre></div>
+
+           </div>
+          </div>
+          <footer>
+
+  <hr/>
+
+  <div role="contentinfo">
+    <p>&#169; Copyright 2026, Alexandre Bezerra de Lima.</p>
+  </div>
+
+  Built with <a href="https://www.sphinx-doc.org/">Sphinx</a> using a
+    <a href="https://github.com/readthedocs/sphinx_rtd_theme">theme</a>
+    provided by <a href="https://readthedocs.org">Read the Docs</a>.
+   
+
+</footer>
+        </div>
+      </div>
+    </section>
+  </div>
+  <script>
+      jQuery(function () {
+          SphinxRtdTheme.Navigation.enable(true);
+      });
+  </script> 
+
+</body>
+</html>
