@@ -42,6 +42,6 @@ def classify_ticket(ticket_text, embedding_model, clf):
     )
 
     return {
-        "classe": predicted_class,
-        "justificativa": justification
+        "class": predicted_class,
+        "justification": justification
     }
