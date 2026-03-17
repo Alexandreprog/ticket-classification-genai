@@ -1,5 +1,28 @@
+import joblib
 from sklearn.linear_model import LogisticRegression
 
+
+def load_classifier(path="models/classifier.joblib"):
+    """Load a trained classification model from disk.
+
+    This function loads a previously trained machine learning model
+    using joblib. The model is expected to be saved in the specified path.
+
+    Args:
+        path (str): Path to the saved model file. Defaults to
+            "models/classifier.joblib".
+
+    Returns:
+        object: Loaded classifier model.
+
+    Example::
+        
+        from src.classifier import load_classifier
+
+        clf = load_classifier()
+        
+    """
+    return joblib.load(path)
 
 def train_classifier(X, y):
     """Train a ticket classification model using Logistic Regression.
@@ -48,7 +71,5 @@ def predict_ticket(clf, embedding):
     probs = clf.predict_proba(embedding)[0]
 
     predicted_class = clf.classes_[probs.argmax()]
-
-    confidence = probs.max()
 
     return predicted_class
