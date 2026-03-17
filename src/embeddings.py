@@ -1,14 +1,15 @@
 from sentence_transformers import SentenceTransformer
-import torch
 
 def load_embedding_model():
     """Load a sentence embedding model.
 
-    The model will automatically use GPU if available,
-    otherwise it will run on CPU.
+    This function initializes and returns a pre-trained sentence
+    transformer model for generating text embeddings. The model
+    is configured to run on CPU to ensure compatibility across
+    different environments.
 
     Returns:
-        SentenceTransformer: Loaded embedding model.
+        SentenceTransformer: Loaded embedding model configured for CPU usage.
 
     Example::
         
@@ -18,11 +19,9 @@ def load_embedding_model():
         
     """
 
-    device = "cuda" if torch.cuda.is_available() else "cpu"
-
     model = SentenceTransformer(
         "all-MiniLM-L6-v2",
-        device=device
+        device="cpu"
     )
 
     return model
