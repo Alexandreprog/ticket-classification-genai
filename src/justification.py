@@ -35,15 +35,15 @@ def generate_justification(ticket, classe):
     """
 
     prompt = f"""
-    Você é um especialista em suporte de TI.
+    You are an IT support specialist.
 
     Ticket:
     {ticket}
 
-    Classe prevista: {classe}
+    Predicted class: {classe}
 
-    Explique em no máximo 2 frases por que esse ticket pertence a essa classe.
-    Destaque palavras ou evidências do texto.
+    Explain in at most 2 sentences why this ticket belongs to this class.
+    Highlight words or evidence from the text.
     """
 
     response = client.chat.completions.create(
