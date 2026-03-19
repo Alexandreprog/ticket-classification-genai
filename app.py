@@ -7,11 +7,11 @@ from src.classifier import load_classifier
 
 st.set_page_config(page_title="Ticket Classifier", layout="centered")
 
-st.title("🎫 Classificador de Tickets")
+st.title("🎫 Ticket Classifier")
 
-st.markdown("Digite um ticket de suporte de TI para classificar e gerar justificativa.")
+st.markdown("Enter an IT support ticket to classify and generate a justification.")
 
-ticket = st.text_area("Texto do ticket", height=150)
+ticket = st.text_area("Ticket text", height=150)
 
 
 @st.cache_resource
@@ -21,19 +21,19 @@ def load_models():
     return embedding_model, clf
 
 
-if st.button("Classificar"):
+if st.button("Classify"):
 
     if not ticket.strip():
-        st.warning("Digite um ticket antes de classificar.")
+        st.warning("Enter a ticket before classifying.")
     else:
-        with st.spinner("Processando..."):
+        with st.spinner("Processing..."):
             embedding_model, clf = load_models()
             result = classify_ticket(ticket, embedding_model, clf)
 
-        st.success("Classificação concluída!")
+        st.success("Classification completed!")
 
-        st.subheader("📌 Classe prevista")
+        st.subheader("📌 Predicted class")
         st.write(result["class"])
 
-        st.subheader("🧠 Justificativa")
+        st.subheader("🧠 Justification")
         st.write(result["justification"])
