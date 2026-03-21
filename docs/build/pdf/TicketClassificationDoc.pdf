@@ -424,7 +424,7 @@ endobj
 endobj
 69 0 obj
 <<
-/Author () /CreationDate (D:20260317172157-03'00') /Creator (\(unspecified\)) /Keywords () /ModDate (D:20260317172157-03'00') /Producer (ReportLab PDF Library - \(opensource\)) 
+/Author () /CreationDate (D:20260321111947-03'00') /Creator (\(unspecified\)) /Keywords () /ModDate (D:20260321111947-03'00') /Producer (ReportLab PDF Library - \(opensource\)) 
   /Subject (\(unspecified\)) /Title () /Trapped /False
 >>
 endobj
@@ -539,7 +539,7 @@ q
 1 0 0 1 40.01575 450.1606 cm
 q
 0 0 0 rg
-BT 1 0 0 1 0 2.4 Tm /F1 12 Tf 14.4 TL 215.934 0 Td (mar\347o 17, 2026) Tj T* -215.934 0 Td ET
+BT 1 0 0 1 0 2.4 Tm /F1 12 Tf 14.4 TL 215.934 0 Td (mar\347o 21, 2026) Tj T* -215.934 0 Td ET
 Q
 Q
 q
@@ -743,7 +743,7 @@ endstream
 endobj
 86 0 obj
 <<
-/Length 9351
+/Length 9343
 >>
 stream
 1 0 0 1 0 0 cm  BT /F1 12 Tf 14.4 TL ET
@@ -1190,7 +1190,7 @@ Q
 q
 1 0 0 1 50.01575 203.4394 cm
 q
-BT 1 0 0 1 0 2 Tm 12 TL /F1 10 Tf 0 0 0 rg (Train a ticket classification model using Logistic Regression.) Tj T* ET
+BT 1 0 0 1 0 2 Tm 12 TL /F1 10 Tf 0 0 0 rg (Train a ticket classification model using Random Forest.) Tj T* ET
 Q
 Q
 q
@@ -1284,7 +1284,7 @@ q
 1 0 0 1 91.03937 3 cm
 q
 0 0 0 rg
-BT 1 0 0 1 0 2 Tm /F1 10 Tf 12 TL (A trained Logistic Regression classifier.) Tj T* ET
+BT 1 0 0 1 0 2 Tm /F1 10 Tf 12 TL (A trained Random Forest classifier.) Tj T* ET
 Q
 Q
 q
@@ -1307,7 +1307,7 @@ q
 1 0 0 1 91.03937 3 cm
 q
 0 0 0 rg
-BT 1 0 0 1 0 2 Tm /F1 10 Tf 12 TL (LogisticRegression) Tj T* ET
+BT 1 0 0 1 0 2 Tm /F1 10 Tf 12 TL (RandomForestClassifier) Tj T* ET
 Q
 Q
 q
@@ -3504,28 +3504,28 @@ xref
 0000015887 00000 n 
 0000018569 00000 n 
 0000018694 00000 n 
-0000028097 00000 n 
-0000040035 00000 n 
-0000048180 00000 n 
-0000054106 00000 n 
-0000060037 00000 n 
-0000060162 00000 n 
-0000061382 00000 n 
-0000061525 00000 n 
-0000061559 00000 n 
-0000061593 00000 n 
-0000061627 00000 n 
-0000061661 00000 n 
-0000061695 00000 n 
-0000061729 00000 n 
-0000061764 00000 n 
-0000061799 00000 n 
-0000061834 00000 n 
-0000061869 00000 n 
+0000028089 00000 n 
+0000040027 00000 n 
+0000048172 00000 n 
+0000054098 00000 n 
+0000060029 00000 n 
+0000060154 00000 n 
+0000061374 00000 n 
+0000061517 00000 n 
+0000061551 00000 n 
+0000061585 00000 n 
+0000061619 00000 n 
+0000061653 00000 n 
+0000061687 00000 n 
+0000061721 00000 n 
+0000061756 00000 n 
+0000061791 00000 n 
+0000061826 00000 n 
+0000061861 00000 n 
 trailer
 <<
 /ID 
-[<6f3c639c8c71eb58b658483a3d2fd32a><6f3c639c8c71eb58b658483a3d2fd32a>]
+[<0d29977299f6c922e05decaea8fe694f><0d29977299f6c922e05decaea8fe694f>]
 % ReportLab generated PDF document -- digest (opensource)
 
 /Info 69 0 R
@@ -3533,5 +3533,5 @@ trailer
 /Size 105
 >>
 startxref
-61904
+61896
 %%EOF

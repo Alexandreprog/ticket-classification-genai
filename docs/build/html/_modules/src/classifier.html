@@ -70,7 +70,7 @@
              
   <h1>Source code for src.classifier</h1><div class="highlight"><pre>
 <span></span><span class="kn">import</span> <span class="nn">joblib</span>
-<span class="kn">from</span> <span class="nn">sklearn.linear_model</span> <span class="kn">import</span> <span class="n">LogisticRegression</span>
+<span class="kn">from</span> <span class="nn">sklearn.ensemble</span> <span class="kn">import</span> <span class="n">RandomForestClassifier</span>
 
 
 <div class="viewcode-block" id="load_classifier">
@@ -101,14 +101,14 @@
 <div class="viewcode-block" id="train_classifier">
 <a class="viewcode-back" href="../../classifier.html#src.classifier.train_classifier">[docs]</a>
 <span class="k">def</span> <span class="nf">train_classifier</span><span class="p">(</span><span class="n">X</span><span class="p">,</span> <span class="n">y</span><span class="p">):</span>
-<span class="w">    </span><span class="sd">&quot;&quot;&quot;Train a ticket classification model using Logistic Regression.</span>
+<span class="w">    </span><span class="sd">&quot;&quot;&quot;Train a ticket classification model using Random Forest.</span>
 
 <span class="sd">    Args:</span>
 <span class="sd">        X (array-like): Feature matrix containing the embeddings of the tickets.</span>
 <span class="sd">        y (array-like): Target labels corresponding to each ticket.</span>
 
 <span class="sd">    Returns:</span>
-<span class="sd">        LogisticRegression: A trained Logistic Regression classifier.</span>
+<span class="sd">        RandomForestClassifier: A trained Random Forest classifier.</span>
 
 <span class="sd">    Example::</span>
 <span class="sd">        </span>
@@ -118,7 +118,12 @@
 <span class="sd">        </span>
 <span class="sd">    &quot;&quot;&quot;</span>
 
-    <span class="n">clf</span> <span class="o">=</span> <span class="n">LogisticRegression</span><span class="p">(</span><span class="n">max_iter</span><span class="o">=</span><span class="mi">1000</span><span class="p">)</span>
+    <span class="n">clf</span> <span class="o">=</span> <span class="n">RandomForestClassifier</span><span class="p">(</span>
+        <span class="n">n_estimators</span><span class="o">=</span><span class="mi">300</span><span class="p">,</span>  
+        <span class="n">max_depth</span><span class="o">=</span><span class="mi">15</span><span class="p">,</span>       
+        <span class="n">random_state</span><span class="o">=</span><span class="mi">42</span><span class="p">,</span>
+        <span class="n">n_jobs</span><span class="o">=-</span><span class="mi">1</span>            
+    <span class="p">)</span>
 
     <span class="n">clf</span><span class="o">.</span><span class="n">fit</span><span class="p">(</span><span class="n">X</span><span class="p">,</span> <span class="n">y</span><span class="p">)</span>
 

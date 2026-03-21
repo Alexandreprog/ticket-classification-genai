@@ -108,15 +108,15 @@
 <span class="sd">    &quot;&quot;&quot;</span>
 
     <span class="n">prompt</span> <span class="o">=</span> <span class="sa">f</span><span class="s2">&quot;&quot;&quot;</span>
-<span class="s2">    Você é um especialista em suporte de TI.</span>
+<span class="s2">    You are an IT support specialist.</span>
 
 <span class="s2">    Ticket:</span>
 <span class="s2">    </span><span class="si">{</span><span class="n">ticket</span><span class="si">}</span>
 
-<span class="s2">    Classe prevista: </span><span class="si">{</span><span class="n">classe</span><span class="si">}</span>
+<span class="s2">    Predicted class: </span><span class="si">{</span><span class="n">classe</span><span class="si">}</span>
 
-<span class="s2">    Explique em no máximo 2 frases por que esse ticket pertence a essa classe.</span>
-<span class="s2">    Destaque palavras ou evidências do texto.</span>
+<span class="s2">    Explain in at most 2 sentences why this ticket belongs to this class.</span>
+<span class="s2">    Highlight words or evidence from the text.</span>
 <span class="s2">    &quot;&quot;&quot;</span>
 
     <span class="n">response</span> <span class="o">=</span> <span class="n">client</span><span class="o">.</span><span class="n">chat</span><span class="o">.</span><span class="n">completions</span><span class="o">.</span><span class="n">create</span><span class="p">(</span>
