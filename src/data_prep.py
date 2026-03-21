@@ -123,7 +123,4 @@ def train_test_split(
     test = df.sample(n=test_size, random_state=seed)
     train = df.drop(test.index)
 
-    print("Train size:", len(train))
-    print("Test size:", len(test))
-
     return train, test
