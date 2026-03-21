@@ -1,5 +1,5 @@
 import joblib
-from sklearn.linear_model import LogisticRegression
+from sklearn.ensemble import RandomForestClassifier
 
 
 def load_classifier(path="models/classifier.joblib"):
@@ -25,14 +25,14 @@ def load_classifier(path="models/classifier.joblib"):
     return joblib.load(path)
 
 def train_classifier(X, y):
-    """Train a ticket classification model using Logistic Regression.
+    """Train a ticket classification model using Random Forest.
 
     Args:
         X (array-like): Feature matrix containing the embeddings of the tickets.
         y (array-like): Target labels corresponding to each ticket.
 
     Returns:
-        LogisticRegression: A trained Logistic Regression classifier.
+        RandomForestClassifier: A trained Random Forest classifier.
 
     Example::
         
@@ -42,7 +42,12 @@ def train_classifier(X, y):
         
     """
 
-    clf = LogisticRegression(max_iter=1000)
+    clf = RandomForestClassifier(
+        n_estimators=300,  
+        max_depth=15,       
+        random_state=42,
+        n_jobs=-1            
+    )
 
     clf.fit(X, y)
 
